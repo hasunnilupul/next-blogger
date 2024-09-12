@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.className} antialiased h-full bg-gray-100`}
+        className={`${spaceGrotesk.className} antialiased h-full bg-white`}
       >
         <Navbar />
         <main>

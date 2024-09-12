@@ -1,21 +1,22 @@
 import React from 'react'
 
 const Header = ({
-  children,
+  title,
+  summary
 }: Readonly<{
-  children: React.ReactNode;
+  title: String;
+  summary?: String;
 }>) => {
   return (
-    <header className="bg-white shadow">
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        {
-          React.isValidElement(children)
-            ? children
-            : (
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-                {children}
-              </h1>
-            )
+    <header className="bg-white">
+      <div className="mx-auto max-w-7xl py-6">
+        <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+          {title}
+        </h1>
+        {summary &&
+          (<p className="mt-2 text-base font-normal tracking-tight text-gray-400">
+            {summary}
+          </p>)
         }
       </div>
     </header>
