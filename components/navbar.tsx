@@ -1,10 +1,8 @@
-"use client";
-
-import React, { useEffect, useMemo, useState } from 'react'
+import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Button } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { SunIcon, MoonIcon } from '@heroicons/react/20/solid'
 import { classNames } from "@/utils/helpers";
+import ThemeToggler from "@/components/theme-toggler";
 
 const user = {
     name: 'Tom Cook',
@@ -27,23 +25,6 @@ const userNavigation = [
 ]
 
 const Navbar = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches));
-
-    // toggle theme between light/dark
-    const toggleTheme = () => {
-        let newTheme = '';
-        if (isDarkTheme) {
-            document.documentElement.classList.remove('dark')
-            newTheme = 'light';
-        } else {
-            document.documentElement.classList.add('dark')
-            newTheme = 'dark';
-        }
-        localStorage.theme = newTheme;
-        localStorage.setItem('theme', newTheme);
-        setIsDarkTheme(prevState => newTheme === 'dark');
-    }
-
     return (
         <Disclosure as="nav" className="bg-white">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -105,15 +86,7 @@ const Navbar = () => {
                                 </Button>
 
                                 {/* Theme toggle button */}
-                                <Button
-                                    type="button"
-                                    className="relative block font-medium text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400"
-                                    onClick={toggleTheme}
-                                >
-                                    <span className="absolute -inset-1.5" />
-                                    <span className="sr-only">View notifications</span>
-                                    {isDarkTheme ? (<MoonIcon aria-hidden="true" className="h-6 w-6" />) : (<SunIcon aria-hidden="true" className="h-6 w-6" />)}
-                                </Button>
+                                <ThemeToggler />
                             </div>
 
                             {/* Profile dropdown */}
@@ -155,15 +128,8 @@ const Navbar = () => {
                         </Button>
 
                         {/* Mobile theme toggle button */}
-                        <Button
-                            type="button"
-                            className="relative block font-medium text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400"
-                            onClick={toggleTheme}
-                        >
-                            <span className="absolute -inset-1.5" />
-                            <span className="sr-only">View notifications</span>
-                            {isDarkTheme ? (<MoonIcon aria-hidden="true" className="size-6" />) : (<SunIcon aria-hidden="true" className="size-6" />)}
-                        </Button>
+                        <ThemeToggler />
+
                         {/* Mobile menu button */}
                         <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white text-black hover:text-pink-500 focus:outline-none">
                             <span className="absolute -inset-0.5" />
