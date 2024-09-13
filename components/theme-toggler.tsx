@@ -18,13 +18,13 @@ const ThemeToggler = () => {
             newTheme = 'dark';
         }
         localStorage.setItem('theme', newTheme);
-        setIsDarkTheme(prevState => newTheme === 'dark');
+        setIsDarkTheme(newTheme === 'dark');
     }
 
     // init
     useEffect(() => {
         const darkThemeEnabled = localStorage.getItem("theme") === 'dark' || ((localStorage.getItem("theme") === null) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        setIsDarkTheme(prevState => darkThemeEnabled);
+        setIsDarkTheme(darkThemeEnabled);
         if (darkThemeEnabled) {
             document.documentElement.classList.add('dark');
         } else {

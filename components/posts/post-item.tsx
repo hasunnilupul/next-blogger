@@ -25,7 +25,7 @@ const PostItem = ({ datetime, contentShort, slug, tags, title }: Post) => {
               <div className="flex flex-wrap">
                 {
                   tags.map(tag => (
-                    <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                    <a key={tag.id} className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                       href={`/tags/${tag.label}`}>
                       {tag.label}
                     </a>

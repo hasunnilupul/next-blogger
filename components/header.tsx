@@ -4,8 +4,8 @@ const Header = ({
   title,
   summary
 }: Readonly<{
-  title: String;
-  summary?: String;
+  title: string;
+  summary?: string;
 }>) => {
   return (
     <header className="space-y-2 pb-8 md:space-y-5">

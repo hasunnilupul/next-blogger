@@ -1,6 +1,5 @@
 import Header from "@/components/header";
 import PostItem from "@/components/posts/post-item";
-import Image from "next/image";
 
 export default function Home() {
   const post = {
