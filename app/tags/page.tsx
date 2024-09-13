@@ -17,7 +17,7 @@ const Tags = () => {
       <div className="flex max-w-lg flex-wrap">
         {
           tags.map(tag => (
-            <TagItem {...tag} />
+            <TagItem key={tag.id} {...tag} />
           ))
         }
       </div>
