@@ -26,35 +26,38 @@ const userNavigation = [
 
 const Navbar = () => {
     return (
-        <Disclosure as="nav" className="bg-white">
+        <Disclosure as="nav" className="w-full bg-white dark:bg-gray-950 py-10">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                         {/* Logo */}
                         <div className="flex-shrink-0">
-                            <div className="flex items-center justify-between">
-                                <div className="mr-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="53.87" height="43.61" viewBox="344.564 330.278 111.737 91.218">
-                                        <defs>
-                                            <linearGradient id="logo_svg__b" x1="420.97" x2="420.97" y1="331.28" y2="418.5" gradientUnits="userSpaceOnUse">
-                                                <stop offset="0%" style={{ stopColor: "#06b6d4", stopOpacity: 1 }}></stop>
-                                                <stop offset="100%" style={{ stopColor: "#67e8f9", stopOpacity: 1 }}></stop>
-                                            </linearGradient>
-                                            <linearGradient id="logo_svg__d" x1="377.89" x2="377.89" y1="331.28" y2="418.5" gradientUnits="userSpaceOnUse">
-                                                <stop offset="0%" style={{ stopColor: "#06b6d4", stopOpacity: 1 }}></stop>
-                                                <stop offset="100%" style={{ stopColor: "#67e8f9", stopOpacity: 1 }}></stop>
-                                            </linearGradient>
-                                            <path id="logo_svg__a" d="M453.3 331.28v28.57l-64.66 58.65v-30.08z"></path>
-                                            <path id="logo_svg__c" d="M410.23 331.28v28.57l-64.67 58.65v-30.08z"></path>
-                                        </defs>
-                                        <use xlinkHref="#logo_svg__a" fill="url(#logo_svg__b)"></use>
-                                        <use xlinkHref="#logo_svg__c" fill="url(#logo_svg__d)"></use>
-                                    </svg>
+                            <a className="break-words" aria-label="TailwindBlog" href="/">
+                                <div className="flex items-center justify-between">
+                                    <div className="mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="53.87" height="43.61" viewBox="344.564 330.278 111.737 91.218">
+                                            <defs>
+                                                <linearGradient id="logo_svg__b" x1="420.97" x2="420.97" y1="331.28" y2="418.5" gradientUnits="userSpaceOnUse">
+                                                    <stop offset="0%" style={{ stopColor: "#06b6d4", stopOpacity: 1 }}></stop>
+                                                    <stop offset="100%" style={{ stopColor: "#67e8f9", stopOpacity: 1 }}></stop>
+                                                </linearGradient>
+                                                <linearGradient id="logo_svg__d" x1="377.89" x2="377.89" y1="331.28" y2="418.5" gradientUnits="userSpaceOnUse">
+                                                    <stop offset="0%" style={{ stopColor: "#06b6d4", stopOpacity: 1 }}></stop>
+                                                    <stop offset="100%" style={{ stopColor: "#67e8f9", stopOpacity: 1 }}></stop>
+                                                </linearGradient>
+                                                <path id="logo_svg__a" d="M453.3 331.28v28.57l-64.66 58.65v-30.08z"></path>
+                                                <path id="logo_svg__c" d="M410.23 331.28v28.57l-64.67 58.65v-30.08z"></path>
+                                            </defs>
+                                            <use xlinkHref="#logo_svg__a" fill="url(#logo_svg__b)"></use>
+                                            <use xlinkHref="#logo_svg__c" fill="url(#logo_svg__d)"></use>
+                                        </svg>
+                                    </div>
+                                    <div className="hidden sm:block h-6 text-2xl font-semibold text-gray-900 dark:text-gray-100">TailwindBlog</div>
                                 </div>
-                                <div className="hidden h-6 text-2xl font-semibold sm:block">TailwindBlog</div>
-                            </div>
+                            </a>
                         </div>
                     </div>
+                    {/* Desktop view */}
                     <div className="hidden md:block">
                         <div className="ml-4 flex items-center md:ml-6">
                             <div className="flex space-x-4">
@@ -116,6 +119,7 @@ const Navbar = () => {
                             </Menu>
                         </div>
                     </div>
+                    {/* Mobile view */}
                     <div className="flex md:hidden space-x-2">
                         {/* Mobile search button */}
                         <Button
@@ -131,7 +135,7 @@ const Navbar = () => {
                         <ThemeToggler />
 
                         {/* Mobile menu button */}
-                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white text-black hover:text-pink-500 focus:outline-none">
+                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white dark:bg-gray-950 text-black dark:text-white hover:text-pink-500 focus:outline-none">
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Open main menu</span>
                             <Bars3Icon aria-hidden="true" className="block size-8 group-data-[open]:hidden" />
@@ -141,6 +145,7 @@ const Navbar = () => {
                 </div>
             </div>
 
+            {/* Mobile view */}
             <DisclosurePanel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     {navigation.map((item) => (
@@ -164,7 +169,7 @@ const Navbar = () => {
                             <img alt="" src={user.imageUrl} className="h-10 w-10 rounded-full" />
                         </div>
                         <div className="ml-3">
-                            <div className="text-base font-medium leading-none text-black">{user.name}</div>
+                            <div className="text-base font-medium leading-none text-black dark:text-white">{user.name}</div>
                             <div className="text-sm font-medium leading-none text-gray-500">{user.email}</div>
                         </div>
                     </div>
