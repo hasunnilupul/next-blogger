@@ -1,7 +1,7 @@
 import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Button } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { classNames } from "@/utils/helpers";
+import { classNames } from "@/lib/utils";
 import ThemeToggler from "@/components/theme-toggler";
 
 const user = {
@@ -69,7 +69,7 @@ const Navbar = () => {
                                             href={item.href}
                                             aria-current={item.current ? 'page' : undefined}
                                             className={classNames(
-                                                item.current ? 'text-pink-500' : 'text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400',
+                                                item.current ? 'text-primary-500' : 'text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400',
                                                 'block font-medium',
                                             )}
                                         >
@@ -81,7 +81,7 @@ const Navbar = () => {
                                 {/* Search button */}
                                 <Button
                                     type="button"
-                                    className="relative block font-medium text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400"
+                                    className="relative block font-medium text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
                                 >
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">View notifications</span>
@@ -95,7 +95,7 @@ const Navbar = () => {
                             {/* Profile dropdown */}
                             <Menu as="div" className="relative ml-6">
                                 <div>
-                                    <MenuButton className="relative flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-white">
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
                                         <img alt="" src={user.imageUrl} className="h-8 w-8 rounded-full" />
@@ -109,7 +109,7 @@ const Navbar = () => {
                                         <MenuItem key={item.name}>
                                             <a
                                                 href={item.href}
-                                                className="block px-4 py-2 text-sm text-gray-700 data-[focus]:text-white data-[focus]:bg-pink-400"
+                                                className="block px-4 py-2 text-sm text-gray-700 data-[focus]:text-white data-[focus]:bg-primary-400"
                                             >
                                                 {item.name}
                                             </a>
@@ -124,7 +124,7 @@ const Navbar = () => {
                         {/* Mobile search button */}
                         <Button
                             type="button"
-                            className="relative block font-medium text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400"
+                            className="relative block font-medium text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
                         >
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">View notifications</span>
@@ -135,7 +135,7 @@ const Navbar = () => {
                         <ThemeToggler />
 
                         {/* Mobile menu button */}
-                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white dark:bg-gray-950 text-black dark:text-white hover:text-pink-500 focus:outline-none">
+                        <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white dark:bg-gray-950 text-black dark:text-white hover:text-primary-500 focus:outline-none">
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Open main menu</span>
                             <Bars3Icon aria-hidden="true" className="block size-8 group-data-[open]:hidden" />
@@ -155,7 +155,7 @@ const Navbar = () => {
                             href={item.href}
                             aria-current={item.current ? 'page' : undefined}
                             className={classNames(
-                                item.current ? 'text-pink-500' : 'text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400',
+                                item.current ? 'text-primary-500' : 'text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400',
                                 'block font-medium px-3 py-2 text-base',
                             )}
                         >
@@ -179,7 +179,7 @@ const Navbar = () => {
                                 key={item.name}
                                 as="a"
                                 href={item.href}
-                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-pink-400 hover:text-white"
+                                className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-primary-400 hover:text-white"
                             >
                                 {item.name}
                             </DisclosureButton>

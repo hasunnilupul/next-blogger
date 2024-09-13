@@ -5,6 +5,6 @@
  * @param  {...string} classes array of css classnames
  * @returns 
  */
-export const classNames = (...classes) => {
+export const classNames = (...classes: string[]) => {
     return classes.filter(Boolean).join(' ')
 }

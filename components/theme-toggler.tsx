@@ -35,7 +35,7 @@ const ThemeToggler = () => {
     return (
         <Button
             type="button"
-            className="relative block font-medium text-gray-900  hover:text-pink-500 dark:text-gray-100 dark:hover:text-pink-400"
+            className="relative block font-medium text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
             onClick={toggleTheme}>
             <span className="absolute -inset-1.5" />
             <span className="sr-only">View notifications</span>
