@@ -15,6 +15,13 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 
+const navigation = [
+  { name: 'Blog', href: '/blog' },
+  { name: 'Tags', href: '/tags' },
+  { name: 'Projects', href: '#' },
+  { name: 'About', href: '/about' },
+]
+
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
@@ -23,7 +30,7 @@ const userNavigation = [
     { name: 'Sign out', href: '#' },
 ]
 
-const Navbar = ({ navLinks }: { navLinks: Array<any> }) => {
+const Navbar = () => {
     const pathname = usePathname();
 
     return (
@@ -64,7 +71,7 @@ const Navbar = ({ navLinks }: { navLinks: Array<any> }) => {
                             <div className="flex space-x-4">
                                 {/* Navigation Links */}
                                 <div className="ml-10 flex items-baseline space-x-4">
-                                    {navLinks.map((item) => (
+                                    {navigation.map((item) => (
                                         <Link
                                             key={item.name}
                                             href={item.href}
@@ -149,14 +156,14 @@ const Navbar = ({ navLinks }: { navLinks: Array<any> }) => {
             {/* Mobile view */}
             <DisclosurePanel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    {navLinks.map((item) => (
+                    {navigation.map((item) => (
                         <DisclosureButton
                             key={item.name}
                             as="a"
                             href={item.href}
-                            aria-current={item.current ? 'page' : undefined}
+                            aria-current={pathname === item.href ? 'page' : undefined}
                             className={classNames(
-                                item.current ? 'text-primary-500' : 'text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400',
+                                pathname === item.href ? 'text-primary-500' : 'text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400',
                                 'block font-medium px-3 py-2 text-base',
                             )}
                         >
