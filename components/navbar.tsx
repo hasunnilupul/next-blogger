@@ -1,8 +1,12 @@
+"use client";
+
 import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Button } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { classNames } from "@/lib/utils";
 import ThemeToggler from "@/components/theme-toggler";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const user = {
     name: 'Tom Cook',
@@ -10,12 +14,7 @@ const user = {
     imageUrl:
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
-const navigation = [
-    { name: 'Blog', href: '#', current: true },
-    { name: 'Tags', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'About', href: '#', current: false },
-]
+
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
@@ -24,7 +23,9 @@ const userNavigation = [
     { name: 'Sign out', href: '#' },
 ]
 
-const Navbar = () => {
+const Navbar = ({ navLinks }: { navLinks: Array<any> }) => {
+    const pathname = usePathname();
+
     return (
         <Disclosure as="nav" className="w-full bg-white dark:bg-gray-950 py-10">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -32,7 +33,7 @@ const Navbar = () => {
                     <div className="flex items-center">
                         {/* Logo */}
                         <div className="flex-shrink-0">
-                            <a className="break-words" aria-label="TailwindBlog" href="/">
+                            <Link className="break-words" aria-label="TailwindBlog" href="/">
                                 <div className="flex items-center justify-between">
                                     <div className="mr-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="53.87" height="43.61" viewBox="344.564 330.278 111.737 91.218">
@@ -54,7 +55,7 @@ const Navbar = () => {
                                     </div>
                                     <div className="hidden sm:block h-6 text-2xl font-semibold text-gray-900 dark:text-gray-100">TailwindBlog</div>
                                 </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     {/* Desktop view */}
@@ -63,18 +64,18 @@ const Navbar = () => {
                             <div className="flex space-x-4">
                                 {/* Navigation Links */}
                                 <div className="ml-10 flex items-baseline space-x-4">
-                                    {navigation.map((item) => (
-                                        <a
+                                    {navLinks.map((item) => (
+                                        <Link
                                             key={item.name}
                                             href={item.href}
-                                            aria-current={item.current ? 'page' : undefined}
+                                            aria-current={pathname === item.href ? 'page' : undefined}
                                             className={classNames(
-                                                item.current ? 'text-primary-500' : 'text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400',
+                                                pathname === item.href ? 'text-primary-500' : 'text-gray-900  hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400',
                                                 'block font-medium',
                                             )}
                                         >
                                             {item.name}
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
 
@@ -148,7 +149,7 @@ const Navbar = () => {
             {/* Mobile view */}
             <DisclosurePanel className="md:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    {navigation.map((item) => (
+                    {navLinks.map((item) => (
                         <DisclosureButton
                             key={item.name}
                             as="a"
