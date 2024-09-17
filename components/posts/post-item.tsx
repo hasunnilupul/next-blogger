@@ -26,7 +26,7 @@ const PostItem = ({ datetime, contentShort, slug, tags, title }: Post) => {
                 {
                   tags.map(tag => (
                     <a key={tag.id} className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                      href={`/tags/${tag.label}`}>
+                      href={`/tags/${tag.slug}`}>
                       {tag.label}
                     </a>
                   ))

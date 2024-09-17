@@ -1,8 +1,10 @@
 import Header from "@/components/header";
 import PostItem from "@/components/posts/post-item";
+import Post from "@/types/Post";
+import Link from "next/link";
 
 export default function Home() {
-  const post = {
+  const latestPosts: Post[] = [{
     id: "2562454",
     datetime: "2023-08-05T00:00:00.000Z",
     title: "Release of Tailwind Nextjs Starter Blog v2.0",
@@ -52,20 +54,25 @@ export default function Home() {
       lastName: "Doe",
       email: "johndoe@gmail.com",
     },
-  };
+  }];
+
   return (
     <>
       <Header title="Latest" summary="A blog created with Next.js and Tailwind.css" />
       <div className="flex flex-col items-center justify-start *:border-t *:border-gray-200">
-        <PostItem {...post} />
+        {
+          latestPosts.map(post => (
+            <PostItem {...post} />
+          ))
+        }
       </div>
       <div className="mt-2 text-base font-medium leading-6 text-end">
-        <a
+        <Link
           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
           aria-label="Read more: &quot;Release of Tailwind Nextjs Starter Blog v2.0&quot;"
           href={`/blog`}>
           All Posts →
-        </a>
+        </Link>
       </div>
     </>
   );

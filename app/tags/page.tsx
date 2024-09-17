@@ -1,13 +1,14 @@
 import TagItem from '@/components/tags/tag-item';
+import { TagWithPostsCount } from '@/types/Tag';
 import React from 'react'
 
 const Tags = () => {
-  const tags = [
-    { id: "4511", label: "next-js", count: 6 },
-    { id: "4512", label: "laravel", count: 10 },
-    { id: "4513", label: "angular", count: 3 },
-    { id: "4514", label: "vue-js", count: 14 },
-    { id: "4515", label: "react-js", count: 20 },
+  const postsOfTags:TagWithPostsCount[] = [
+    { id: "4511", label: "next-js", slug: "next-js", count: 6 },
+    { id: "4512", label: "laravel", slug: "laravel", count: 10 },
+    { id: "4513", label: "angular", slug: "angular", count: 3 },
+    { id: "4514", label: "vue-js", slug: "vue-js", count: 14 },
+    { id: "4515", label: "react-js", slug: "react-js", count: 20 },
   ]
   return (
     <div className="flex flex-col items-start justify-start divide-y divide-gray-200 dark:divide-gray-700 md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6 md:divide-y-0">
@@ -16,7 +17,7 @@ const Tags = () => {
       </div>
       <div className="flex max-w-lg flex-wrap">
         {
-          tags.map(tag => (
+          postsOfTags.map((tag) => (
             <TagItem key={tag.id} {...tag} />
           ))
         }
