@@ -2,6 +2,12 @@ import Header from '@/components/header';
 import Image from 'next/image';
 import React from 'react'
 import OwnerAvatar from "@/app/images/owner-avatar.jpg";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: "Blogger | About",
+    description: "Personal blog created with Next.js, Headless-UI and Tailwind CSS",
+  };
 
 const About = () => {
     return (

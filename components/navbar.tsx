@@ -107,7 +107,7 @@ const Navbar = () => {
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-white">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <Image alt="" src={user.imageUrl} className="h-8 w-8 rounded-full" />
+                                        <Image alt="" src={user.imageUrl} className="h-8 w-8 rounded-full" width={256} height={256}/>
                                     </MenuButton>
                                 </div>
                                 <MenuItems
@@ -175,7 +175,7 @@ const Navbar = () => {
                 <div className="border-t border-gray-200 pb-3 pt-4">
                     <div className="flex items-center px-5">
                         <div className="flex-shrink-0">
-                            <Image alt="" src={user.imageUrl} className="h-10 w-10 rounded-full" />
+                            <Image alt="" src={user.imageUrl} className="h-10 w-10 rounded-full" width={256} height={256} />
                         </div>
                         <div className="ml-3">
                             <div className="text-base font-medium leading-none text-black dark:text-white">{user.name}</div>
