@@ -17,7 +17,6 @@ const ViewPost = ({ params }: { params: { slug: string } }) => {
 
     // init
     useEffect(() => {
-        // optimize following code
         window.addEventListener('scroll', throttledScrollListener);
 
         return () => {
