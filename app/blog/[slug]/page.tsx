@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, MutableRefObject } from 'react'
+import { throttle } from 'lodash';
 
 const ViewPost = ({ params }: { params: { slug: string } }) => {
     const scrollContainerRef: MutableRefObject<any> = useRef(null);
@@ -12,12 +13,15 @@ const ViewPost = ({ params }: { params: { slug: string } }) => {
         }
     };
 
+    const throttledScrollListener = throttle(scrollListener, 100); // Adjust the time as needed
+
     // init
     useEffect(() => {
-        window.addEventListener('scroll', scrollListener);
+        // optimize following code
+        window.addEventListener('scroll', throttledScrollListener);
 
         return () => {
-            window.removeEventListener('scroll', scrollListener);
+            window.removeEventListener('scroll', throttledScrollListener);
         };
     }, []);
 
